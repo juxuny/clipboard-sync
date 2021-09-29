@@ -20,5 +20,6 @@ require (
 	github.com/qiangxue/fasthttp-routing v0.0.0-20160225050629-6ccdc2a18d87
 	github.com/satori/go.uuid v1.2.0
 	github.com/sirupsen/logrus v1.8.1
+	github.com/spf13/cobra v1.1.3
 	github.com/valyala/fasthttp v1.30.0
 )
