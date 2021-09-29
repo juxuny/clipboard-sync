@@ -10,7 +10,7 @@ import (
 func GetLocal() (data []byte, err error) {
 	out := bytes.NewBuffer(nil)
 	if runtime.GOOS == "linux" {
-		cmd := exec.Command("xclip", "-o")
+		cmd := exec.Command("xclip", "-o", "-sel", "clipboard")
 		cmd.Stdout = out
 		if err := cmd.Start(); err != nil {
 			return nil, err
@@ -18,7 +18,6 @@ func GetLocal() (data []byte, err error) {
 		if err := cmd.Wait(); err != nil {
 			return nil, err
 		}
-		return
 	} else if runtime.GOOS == "darwin" {
 		cmd := exec.Command("pbpaste")
 		cmd.Stdout = out
@@ -37,7 +36,7 @@ func GetLocal() (data []byte, err error) {
 
 func SetLocal(data []byte) error {
 	if runtime.GOOS == "linux" {
-		cmd := exec.Command("xclip", "-i")
+		cmd := exec.Command("xclip", "-i", "-sel", "clipboard")
 		cmd.Stdin = bytes.NewReader(data)
 		if err := cmd.Start(); err != nil {
 			return err

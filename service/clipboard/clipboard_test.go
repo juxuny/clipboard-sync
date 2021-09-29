@@ -9,3 +9,10 @@ func TestGetLocal(t *testing.T) {
 	}
 	t.Log(string(data))
 }
+
+func TestSetLocal(t *testing.T) {
+	data := []byte("123")
+	if err := SetLocal(data); err != nil {
+		t.Fatal(err)
+	}
+}
