@@ -79,7 +79,8 @@ func (t *runCmd) run() {
 	localSign := lib.MD5FromBytes(localData)
 	if localSign != t.localSign {
 		t.localUpdateTime = time.Now()
-		log.Debug("local data update")
+		t.localSign = localSign
+		log.Debug("local data update: " + string(localData))
 	}
 	remoteData, err := t.getRemoteData()
 	if err != nil {
@@ -89,7 +90,8 @@ func (t *runCmd) run() {
 	remoteSign := lib.MD5FromBytes(remoteData)
 	if remoteSign != t.remoteSign {
 		t.remoteUpdateTime = time.Now()
-		log.Debug("remote data update")
+		log.Debug("remote data update: " + string(remoteData))
+		t.remoteSign = remoteSign
 	}
 	if t.localSign == t.remoteSign {
 		return // the clipboard data is same
