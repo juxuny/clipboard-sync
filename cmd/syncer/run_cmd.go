@@ -66,7 +66,7 @@ func (t *runCmd) getRemoteData() (data []byte, err error) {
 	if resp.Code != http.StatusOK {
 		return nil, errors.Errorf("sync clipboard data failed: %v", resp.Msg)
 	}
-	return
+	return []byte(resp.Result.Data), nil
 }
 
 func (t *runCmd) run() {
