@@ -8,6 +8,7 @@ x-default: &default
 
 services:
   api:
+    restart: always
     container_name: syncer_api
     build:
       dockerfile: Dockerfile
