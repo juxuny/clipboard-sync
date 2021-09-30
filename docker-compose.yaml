@@ -14,7 +14,7 @@ services:
       dockerfile: Dockerfile
       context: .
     ports:
-      - "${PORT}:${PORT}"
+      - "${PORT}:8080"
     environment:
       SIGN_SECRET: "${SIGN_SECRET}"
       ALLOW_TOKEN: "${ALLOW_TOKEN}"
