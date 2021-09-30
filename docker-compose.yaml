@@ -1,0 +1,22 @@
+version: "3.4"
+x-default: &default
+  logging:
+    options:
+      max-size: "5M"
+      max-file: "5"
+
+
+services:
+  api:
+    container_name: syncer_api
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      SIGN_SECRET: "${SIGN_SECRET}"
+      ALLOW_TOKEN: "${ALLOW_TOKEN}"
+      CHECK_SIGN: "${CHECK_SIGN}"
+    <<: *default
+
